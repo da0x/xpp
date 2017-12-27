@@ -7,7 +7,8 @@
 //
 
 #include "x_options.hpp"
-#include "x_tree.hpp"
+#include "x_table.hpp"
+
 #include <vector>
 #include <string>
 #include <iostream>
@@ -55,18 +56,18 @@ void options::map_to(option::map option_map){
 }
 std::string options::print(){
     std::stringstream stream;
-    x::table out("options");
+    x::table out("available options:");
     out("switch")("description")++;
     for(auto iter:map){
         out(iter.first)(iter.second.description())++;
     }
-    stream << "Usage: xctest -[switch] value1 value2 ..." << std::endl;
+    stream << "Usage: -[switch] value1 value2 ..." << std::endl;
     stream << out;
     return stream.str();
 }
 std::string options::print_values(){
     std::stringstream stream;
-    x::table out("provided options");
+    x::table out("available options:");
     out("switch")("value")++;
     for(auto iter:map){
         std::stringstream stream;

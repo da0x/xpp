@@ -86,9 +86,9 @@ namespace x {
                 return iterator->second;
             }
             
-            throw -1;
+            throw -1; // You forgot to add a switch to the map.
         }
     };
 }
 
-#endif /* xctest_options_hpp */
+#endif /* x_options_hpp */
