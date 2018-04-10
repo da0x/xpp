@@ -24,6 +24,7 @@ namespace x {
             << "rm "
             << "-f "
             << "-r "
+            << "-v "
             << "\"" << file << "\" ";
             return command.str();
         }
@@ -57,6 +58,17 @@ namespace x {
             << "\"" << dst << "\" ";
           //  std::cout << command.str() << std::endl;
             return command.str();
+        }
+        inline string move(string src, string dst){
+            std::stringstream command;
+            command
+            << "mv "
+            << "-f "
+            << "-v "
+            << "\"" << src << "\" "
+            << "\"" << dst << "\" ";
+            return command.str();
+           // std::cout << command.str() << std::endl;
         }
     }
 }
