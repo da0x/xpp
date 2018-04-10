@@ -10,25 +10,27 @@
 #define x_options_hpp
 
 /* : Example :
- 
-    namespace arg {
-    std::string help = "-help";
-    std::string name = "-name-list";
-    }
-
-    auto arguments = x::options(argc,argv);
-    arguments.map_to({
-    {arg::help,    x::option("produces the usage of this tool.")},
-    {arg::name,    x::option("takes your first and last names.")}
-    });
-
-    if(arguments[arg::help]){
-    ... arguments[arg::help].value();
-    }
-
-    if(arguments[arg::name]){
-    ... arguments[arg::name].values();
-    }
+ #include <iostream>
+ #include "x_options.hpp"
+ namespace arg {
+     std::string help = "-help";
+      std::string name = "-name";
+      std::string x = "-x";
+ }
+ int main(int argc, const char * argv[]) {
+      auto arguments = x::options(argc,argv);
+      arguments.map_to({
+           {arg::help,    x::option("produces the usage of this tool.")},
+           {arg::name,    x::option("takes your first and last names.")}
+      });
+      if(arguments[arg::help]){
+           std::cout << arguments.print() << std::endl;
+      }
+      if(arguments[arg::name]){
+           std::cout<< arguments[arg::name].value() << std::endl;
+      }
+      return 0;
+ }
  */
 
 #include <string>
